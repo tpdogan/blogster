@@ -1,0 +1,2 @@
+class ArticleToTag < ApplicationRecord
+end
