@@ -1,6 +1,6 @@
 import imageToBase64 from "./modules/imageToBase64"
 
-const selectedImage = document.getElementById('selected_new_image')
+const selectedImage = document.getElementById('selected_image')
 const avatar = document.getElementById('author_avatar')
 const imageInput = document.getElementById('upload_new_image')
 imageInput.addEventListener('change', () => {
@@ -12,3 +12,10 @@ function insertBase64(base64String) {
   selectedImage.src = base64String
   avatar.value = base64String
 }
+
+// Show avatar image if it exists
+setTimeout(() => {
+  console.log(avatar)
+  console.log(avatar.value)
+  insertBase64(avatar.value)
+}, 100)
