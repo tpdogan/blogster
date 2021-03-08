@@ -8,11 +8,25 @@
 
           <div class="field">
             <div class="control">
-              <%= f.file_field :profile_photo, accept: 'image/png,image/jpeg' %>
+              <label for="image" class="label">Avatar</label>
+              <div class="file">
+                <label class="file-label is-full-width">
+                  <input class="file-input" type="file" id="upload_new_image">
+                  <%= f.input :avatar,
+                              input_html: { class: "hidden new_image" },
+                              label: false,
+                              wrapper: false %>
+                  <span class="file-cta is-full-width">
+                    <span class="file-icon">
+                      <i class="fal fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      Choose an image…
+                    </span>
+                  </span>
+                </label>
+              </div>
             </div>
-            <% unless resource.errors[:profile_photo].empty? %>
-              <p class="help is-danger">Please enter a valid e-mail.</p>
-            <% end %>
           </div>
 
           <div class="field">
@@ -39,26 +53,6 @@
             <% unless resource.errors[:username].empty? %>
               <p class="help is-danger">The username is taken or empty.</p>
             <% end %>
-          </div>
-
-          <div class="field">
-            <div class="control">
-              <%= f.input :full_name,
-                        input_html: { autocomplete: "full_name", class: "input" },
-                        label_html: { class: "label" },
-                        wrapper: false,
-                        error: false %>
-            </div>
-          </div>
-
-          <div class="field">
-            <div class="control">
-              <%= f.input :date_of_birth,
-                        input_html: { autocomplete: "date_of_birth", class: "input" },
-                        label_html: { class: "label" },
-                        wrapper: false,
-                        error: false %>
-            </div>
           </div>
 
           <div class="field">
@@ -130,7 +124,7 @@
 
           <div class="field">
             <div class="control">
-              <%= link_to "Take me back", author_path(resource), class: "button is-link" %>
+              <%= link_to "Take me back", :back, class: "button is-link" %>
             </div>
           </div>
       </div>
