@@ -23,6 +23,9 @@
   width: 100% !important;
   height: 100% !important;
 }
+.is-half-width {
+  width: 50% !important;
+}
 .is-full-width {
   width: 100% !important;
 }
@@ -57,4 +60,12 @@
   height: 4rem;
   margin-top: 2rem;
   @include is-flex-row-centered;
+}
+// 4. ADD TO BULMA
+.file-cta {
+  border-radius: 4px 0 0 4px !important;
+  justify-content: center !important;
+}
+.file-cta-remove {
+  border-radius: 0 4px 4px 0 !important;
 }
