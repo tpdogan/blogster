@@ -7,5 +7,5 @@ class Author < ApplicationRecord
   has_many :articles
   has_many :comments
 
-  validates :username, presence: true, uniqueness: true
+  validates :username, :email, presence: true, uniqueness: true
 end
