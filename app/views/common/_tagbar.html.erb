@@ -2,10 +2,13 @@
   <div class="navbar-item">
     <div class="field is-grouped">
       <p class="control">
-        <button class="button is-info is-inverted">Tag 1</button>
+        <%= link_to Tag.last.name.capitalize, root_path, class: "button is-info is-inverted" %>
       </p>
       <p class="control">
-        <button class="button is-info is-inverted">Tag 2</button>
+        <%= link_to Tag.second_to_last.name.capitalize, root_path, class: "button is-info is-inverted" %>
+      </p>
+      <p class="control">
+        <%= link_to Tag.third_to_last.name.capitalize, root_path, class: "button is-info is-inverted" %>
       </p>
     </div>
   </div>
