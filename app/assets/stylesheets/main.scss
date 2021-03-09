@@ -41,6 +41,7 @@
 }
 // 3. ARTICLE VIEW
 .article {
+  position: relative;
   overflow: hidden;
   display: flex !important;
   flex-wrap: wrap;
@@ -63,9 +64,9 @@
   }
 }
 .article__image {
-  background-color: #9300682E;
+  background-color: #3298DC;
   border-radius: 0.2rem;
-  padding: 0.5rem;
+  padding: 2px;
 }
 .article__inner {
   display: flex;
@@ -84,6 +85,11 @@
 .article__body {
   text-indent: 1rem;
   line-height: 1.75rem;
+}
+.article__readme {
+  position: absolute !important;
+  right: 1rem;
+  bottom: 1rem;
 }
 // 4. ARTICLE EDIT
 .editor__textarea {
