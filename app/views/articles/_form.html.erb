@@ -1,0 +1,71 @@
+<%= simple_form_for(@article) do |f| %>
+  <div class="field">
+    <div class="control">
+    <%= f.input :title,
+                required: true,
+                autofocus: true,
+                input_html: { class: "input" },
+                label_html: { class: "label" },
+                wrapper: false,
+                error: false %>
+    </div>
+    <% unless @article.errors[:title].empty? %>
+      <p class="help is-danger">Please enter a title.</p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <div class="control">
+    <%= f.input :body,
+                as: :text,
+                required: true,
+                autofocus: true,
+                input_html: { class: "input" },
+                label_html: { class: "label" },
+                wrapper: false,
+                error: false %>
+    </div>
+    <% unless @article.errors[:body].empty? %>
+      <p class="help is-danger">Minimum 100, and maximum 500 characters.</p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <label for="image" class="label">Article Image</label>
+      <img class='hidden' id="selected_image">
+      <div class="file">
+        <label class="file-label is-full-width">
+          <input class="file-input" type="file" id="upload_new_image">
+          <%= f.input :image,
+                      input_html: { class: "hidden new_image" },
+                      label: false,
+                      wrapper: false %>
+          <span class="file-cta is-half-width">
+            <span class="file-icon">
+              <i class="fa fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Upload
+            </span>
+          </span>
+          <button class="button is-danger file-cta-remove is-half-width" id="delete_article_image">Remove</button>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= label_tag "Tags (comma seperated)", nil, class: "label" %>
+      <input type="text" class="input" id="article_tags">
+    </div>
+    <p class="help is-danger hidden">Please enter at least 1 tag.</p>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= f.button :submit, "Publish", class: "button is-primary" %>
+    </div>
+  </div>
+<% end %>
