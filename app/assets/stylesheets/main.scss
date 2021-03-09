@@ -39,7 +39,7 @@
   top: -10000px !important;
   left: -10000px !important;
 }
-// 3. ARTICLE
+// 3. ARTICLE VIEW
 .article {
   min-height: 300px !important;
   max-height: 300px;
@@ -61,7 +61,15 @@
   margin-top: 2rem;
   @include is-flex-row-centered;
 }
-// 4. ADD TO BULMA
+// 4. ARTICLE EDIT
+.editor__textarea {
+  min-height: 300px;
+  resize: vertical;
+}
+.editor__tags {
+  position: relative;
+}
+// . ADD TO BULMA
 .file-cta {
   border-radius: 4px 0 0 4px !important;
   justify-content: center !important;
