@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   include ArticlesHelper
 
   def index
-    @articles = Article.all
+    @articles = params[:tag] ? Tag.find_by_name(params[:tag]).articles : Article.all
   end
 
   def new

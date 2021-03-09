@@ -21,7 +21,7 @@
               <p class="is-flex is-flex-wrap-wrap">
                 <strong>Tags:</strong>
                 <% @article.tags.each do |tag| %>
-                  <%= link_to tag.name.capitalize, root_path, class: 'ml-2' %> 
+                  <%= link_to tag.name.capitalize, articles_path(:tag => tag.name), class: 'ml-2' %> 
                 <% end %>
               </p>
 
