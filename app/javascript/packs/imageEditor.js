@@ -8,3 +8,6 @@ insertImageAsBase64(
   ],
   document.getElementById('delete_article_image')
 )
+
+// For edit page show image that already exist
+document.getElementById('selected_image').src = document.getElementById('article_image').value
