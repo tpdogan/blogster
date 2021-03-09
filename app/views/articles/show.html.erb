@@ -1,0 +1,49 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-6 is-offset-3">
+
+        <div class="field">
+          <div class="control">
+            <div class='article__title article--large-font'><%= @article.title %></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <div class="article__details">
+              <p class="is-flex is-flex-wrap-wrap">
+                <strong class='is-size-6'>
+                  By <span class='has-text-link'><%= link_to @article.author.username, root_path %></span>
+                </strong>
+              </p>
+
+              <p class="is-flex is-flex-wrap-wrap">
+                <strong>Tags:</strong>
+                <% @article.tags.each do |tag| %>
+                  <%= link_to tag.name.capitalize, root_path, class: 'ml-2' %> 
+                <% end %>
+              </p>
+
+              <p class="is-inline-flex"><strong class='mr-2'>Created:</strong> <%= @article.created_at.strftime("%d/%m/%Y %A %I:%M %p") %></p> | 
+              <p class="is-inline-flex"><strong class='mr-2'>Updated:</strong> <%= ((Time.now - @article.updated_at)/3600).round %> hours ago</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <img class='article__image' src=<%= @article.image %> alt=<%= @article.title %>>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <div class='article__body'><%= simple_format(@article.body) %></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

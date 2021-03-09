@@ -63,6 +63,9 @@
     max-height: 50%;
   }
 }
+.article--large-font {
+  font-size: 2rem !important;
+}
 .article__image {
   background-color: #3298DC;
   border-radius: 0.2rem;
@@ -90,6 +93,10 @@
   position: absolute !important;
   right: 1rem;
   bottom: 1rem;
+}
+.article__details {
+  font-weight: 300;
+  font-size: 14px;
 }
 // 4. ARTICLE EDIT
 .editor__textarea {
