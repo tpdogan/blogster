@@ -7,5 +7,5 @@ class Article < ApplicationRecord
 
   validates :title, :body, :image, presence: true
   validates :title, uniqueness: true
-  validates :body, length: { in: 150..500 }
+  validates :body, length: { in: 150..1000 }
 end

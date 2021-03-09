@@ -17,7 +17,7 @@ submit.addEventListener('click', (e) => {
   }
 
   // Checks for body
-  if (bodyInput.value.length < 100 || bodyInput.value.length > 500) {
+  if (bodyInput.value.length < 100 || bodyInput.value.length > 1000) {
     showError(document.getElementById('article_body_error'))
     submit = false
   }
