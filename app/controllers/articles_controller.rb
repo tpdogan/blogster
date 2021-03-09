@@ -3,9 +3,9 @@ class ArticlesController < ApplicationController
   include ArticlesHelper
 
   def index
-    @articles = params[:tag] ? Tag.find_by_name(params[:tag]).articles :
-                params[:author] ? Author.find_by_username(params[:author]).articles :
-                Article.all
+    @articles = params[:tag] ? Tag.find_by_name(params[:tag]).articles.reverse :
+                params[:author] ? Author.find_by_username(params[:author]).articles.reverse :
+                Article.all.reverse
   end
 
   def new
