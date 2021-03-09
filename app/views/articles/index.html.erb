@@ -1,19 +1,24 @@
 <section class="section">
   <div class="container">
-    <div class="tile is-ancestor">
+    <div class="tile is-ancestor is-vertical">
       
       <% @articles.each_with_index do |article, index| %>
         <%# Size of the articles alternates at each row %>
-        <% size = [2,3].include? index % 6 ? 1 : 2 %>
-        <% start = [0,4].include? index % 6 ? true : false %>
-        <% finish = [1,5].include? index % 6 ? true : false %>
+        <% size = ([2,3].include? index % 6) ? 1 : 2 %>
+        <% start = [0,4].include? index % 6 %>
+        <% finish = [1,5].include? index % 6 %>
+        <% parentStart = index % 3 == 0 %>
+        <% parentFinish = index % 3 == 2 %>
+
+        <%# Check if parent should start%>
+        <% if parentStart %><div class="tile is-parent is-12"><% end %>
 
         <%# Check if double row should start %>
-        <% if start %><div class='<%= "tile is-vertical is-parent is-8 article" %>'><% end %>
+        <% if start %><div class="tile is-parent is-vertical is-8"><% end %>
 
         <%# Depending on the size change style %>
         <% if size == 2 %>
-          <article class="tile is-child article">
+          <article class="tile is-child article article--horizontal box p-2">
             <img class='article__image' src=<%= article.image %> alt=<%= article.title %>>
             <div class='article__inner'>
               <div class='article__title'><%= article.title %></div>
@@ -21,21 +26,29 @@
             </div>
           </article>
         <% else %>
-          <article class="tile is-parent is-4 article">
-            <img class='article__image' src=<%= article.image %> alt=<%= article.title %>>
-            <div class='article__inner'>
-              <div class='article__title'><%= article.title %></div>
-              <div class='article__body'><%= article.body %></div>
+          <article class="tile is-parent is-4">
+            <div class="tile is-child article article--vertical box p-2">
+              <img class='article__image' src=<%= article.image %> alt=<%= article.title %>>
+              <div class='article__inner'>
+                <div class='article__title'><%= article.title %></div>
+                <div class='article__body'><%= article.body %></div>
+              </div>
             </div>
           </article>
         <% end %>
 
         <%# Check if double row should end %>
         <% if finish %></div><% end %>
+
+        <%# Check if parent should end%>
+        <% if parentFinish %></div><% end %>
       <% end %>
 
       <%# Check if double row may not ended properly %>
       <% if [1,5].include? @articles.length % 6 %></div><% end %>
+
+      <%# Check if parent did not ended properly %>
+      <% if @articles.length % 3 != 2 %></div><% end %>
 
     </div>
   </div>
