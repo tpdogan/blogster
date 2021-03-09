@@ -1,4 +1,7 @@
 <%= simple_form_for(@article) do |f| %>
+  <%# Prevent submission when hit enter %>
+  <button type="submit" disabled class="hidden" aria-hidden="true"></button>
+  
   <div class="field">
     <div class="control">
     <%= f.input :title,
@@ -60,11 +63,14 @@
 
   <div class="field">
     <div class="control">
-      <%= label_tag "Tags (comma seperated)", nil, class: "label" %>
-      <div class="hidden editor__tags"></div>
-      <input type="text" class="input" id="article_tags">
+      <%= label_tag "Tags (only alphanumeric characters)", nil, class: "label" %>
+      <div class="editor__tags-wrap mb-2"></div>
+      <input type="text" class="input" id="tag_input" placeholder="Type comma to save">
+      <%= hidden_field_tag :article_tags, nil %>
     </div>
-    <p class="help is-danger hidden">Please enter at least one tag</p>
+    <p class="help is-danger hidden" id="article_tags_length_error">Tags must have minimum 4 characters</p>
+    <p class="help is-danger hidden" id="article_tags_exist_error">Tag already exists</p>
+    <p class="help is-danger hidden" id="article_tags_empty_error">Please enter at least one tag</p>
   </div>
 
   <div class="field">
@@ -73,3 +79,5 @@
     </div>
   </div>
 <% end %>
+
+<%= javascript_pack_tag 'tagEditor' %>

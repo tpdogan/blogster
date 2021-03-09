@@ -66,8 +66,15 @@
   min-height: 300px;
   resize: vertical;
 }
-.editor__tags {
-  position: relative;
+.editor__tags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.editor__tag {
+  padding: 0.5rem 1rem;
+  background-color: lightgray;
+  border-radius: 1rem;
+  margin: 0.25rem;
 }
 // . ADD TO BULMA
 .file-cta {
