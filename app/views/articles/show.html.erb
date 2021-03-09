@@ -14,7 +14,7 @@
             <div class="article__details">
               <p class="is-flex is-flex-wrap-wrap">
                 <strong class='is-size-6'>
-                  By <span class='has-text-link'><%= link_to @article.author.username, root_path %></span>
+                  By <span class='has-text-link'><%= link_to @article.author.username, articles_path(:author => @article.author.username) %></span>
                 </strong>
               </p>
 

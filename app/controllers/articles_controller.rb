@@ -3,7 +3,9 @@ class ArticlesController < ApplicationController
   include ArticlesHelper
 
   def index
-    @articles = params[:tag] ? Tag.find_by_name(params[:tag]).articles : Article.all
+    @articles = params[:tag] ? Tag.find_by_name(params[:tag]).articles :
+                params[:author] ? Author.find_by_username(params[:author]).articles :
+                Article.all
   end
 
   def new
