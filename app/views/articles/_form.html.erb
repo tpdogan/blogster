@@ -1,7 +1,7 @@
 <%= simple_form_for(@article) do |f| %>
   <%# Prevent submission when hit enter %>
   <button type="submit" disabled class="hidden" aria-hidden="true"></button>
-  
+
   <div class="field">
     <div class="control">
     <%= f.input :title,
@@ -36,14 +36,16 @@
   <div class="field">
     <div class="control">
       <label for="image" class="label">Article Image</label>
-      <img class='hidden' id="selected_image">
       <div class="file">
         <label class="file-label is-full-width">
           <input class="file-input" type="file" id="upload_new_image">
           <%= f.input :image,
+                      required: true,
+                      autofocus: true,
                       input_html: { class: "hidden new_image" },
                       label: false,
-                      wrapper: false %>
+                      wrapper: false,
+                      error: false %>
           <span class="file-cta is-half-width">
             <span class="file-icon">
               <i class="fa fa-upload"></i>
@@ -59,13 +61,14 @@
     <% unless @article.errors[:image].empty? %>
       <p class="help is-danger">Please upload one image</p>
     <% end %>
+    <img class='mt-2' id="selected_image">
   </div>
 
   <div class="field">
     <div class="control">
       <%= label_tag "Tags (only alphanumeric characters)", nil, class: "label" %>
-      <div class="editor__tags-wrap mb-2"></div>
       <input type="text" class="input" id="tag_input" placeholder="Type comma to save">
+      <div class="editor__tags-wrap my-2"></div>
       <%= hidden_field_tag :article_tags, nil %>
     </div>
     <p class="help is-danger hidden" id="article_tags_length_error">Tags must have minimum 4 characters</p>
@@ -81,3 +84,4 @@
 <% end %>
 
 <%= javascript_pack_tag 'tagEditor' %>
+<%= javascript_pack_tag 'imageEditor' %>
