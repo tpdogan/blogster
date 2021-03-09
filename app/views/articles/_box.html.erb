@@ -1,0 +1,8 @@
+<article class='<%= "tile is-child article #{boxClass} box p-2" %>'>
+  <%= link_to 'Read more', article_path(article), class: 'button is-link article__readme' %>
+  <img class='article__image' src=<%= article.image %> alt=<%= article.title %>>
+  <div class='article__inner'>
+    <div class='article__title'><%= article.title %></div>
+    <div class='article__body'><%= article.body %></div>
+  </div>
+</article>
