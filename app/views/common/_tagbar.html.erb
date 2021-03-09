@@ -1,15 +1,12 @@
-<nav class="navbar is-primary is-flex-row-centered">
+<nav class="navbar is-dark is-flex-row-centered">
   <div class="navbar-item">
-    <div class="field is-grouped">
-      <p class="control">
-        <%= link_to Tag.last.name.capitalize, articles_path(:tag => Tag.last.name), class: "button is-info is-inverted" %>
-      </p>
-      <p class="control">
-        <%= link_to Tag.second_to_last.name.capitalize, articles_path(:tag => Tag.second_to_last.name), class: "button is-info is-inverted" %>
-      </p>
-      <p class="control">
-        <%= link_to Tag.third_to_last.name.capitalize, articles_path(:tag => Tag.third_to_last.name), class: "button is-info is-inverted" %>
-      </p>
+    <div class="field is-grouped tagbar">
+      <% tags = Tag.all.reverse %>
+      <% (tags.length < 20 ? tags.length : 20).times do |index| %>
+        <p class="control">
+          <%= link_to tags[index].name.capitalize, articles_path(:tag => tags[index].name), class: "button is-warning is-outlined is-rounded tag__button" %>
+        </p>
+      <% end %>
     </div>
   </div>
 </nav>

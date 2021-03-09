@@ -1,15 +1,15 @@
 // MIXINS
 @mixin is-flex-row-centered {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 @mixin is-flex-column-centered {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 // 1. FONT STYLES AND IMPORTS
 // 2. GENERAL
@@ -38,6 +38,19 @@
   position: absolute !important;
   top: -10000px !important;
   left: -10000px !important;
+}
+// HEADER AND NAV
+.tagbar {
+  @include is-flex-row-centered;
+	overflow: hidden;
+	width: 100vw;
+	padding: 0 1rem;
+	flex-wrap: wrap;
+	height: 2.5rem;
+}
+.tag__button {
+	border-width: 2px !important;
+	font-weight: 600;
 }
 // 3. ARTICLE VIEW
 .article {
