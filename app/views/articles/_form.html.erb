@@ -12,9 +12,7 @@
                 wrapper: false,
                 error: false %>
     </div>
-    <% unless @article.errors[:title].empty? %>
-      <p class="help is-danger">Please enter a title</p>
-    <% end %>
+    <p class='<%= "help is-danger #{"hidden" if @article.errors[:title].empty?}" %>' id="article_title_error">Please enter a title of at least 10 characters</p>
   </div>
 
   <div class="field">
@@ -28,9 +26,7 @@
                 wrapper: false,
                 error: false %>
     </div>
-    <% unless @article.errors[:body].empty? %>
-      <p class="help is-danger">Minimum 100, and maximum 500 characters</p>
-    <% end %>
+    <p class='<%= "help is-danger #{"hidden" if @article.errors[:body].empty?}" %>' id="article_body_error">Minimum 100, and maximum 500 characters</p>
   </div>
 
   <div class="field">
@@ -58,9 +54,7 @@
         </label>
       </div>
     </div>
-    <% unless @article.errors[:image].empty? %>
-      <p class="help is-danger">Please upload one image</p>
-    <% end %>
+    <p class='<%= "help is-danger #{"hidden" if @article.errors[:image].empty?}" %>' id="article_image_error">Please upload an image</p>
     <img class='mt-2' id="selected_image">
   </div>
 
@@ -73,15 +67,16 @@
     </div>
     <p class="help is-danger hidden" id="article_tags_length_error">Tags must have minimum 4 characters</p>
     <p class="help is-danger hidden" id="article_tags_exist_error">Tag already exists</p>
-    <p class="help is-danger hidden" id="article_tags_empty_error">Please enter at least one tag</p>
+    <p class="help is-danger hidden" id="article_tags_error">Please enter at least one tag</p>
   </div>
 
   <div class="field">
     <div class="control">
-      <%= f.button :submit, "Publish", class: "button is-primary" %>
+      <%= f.button :submit, "Publish", class: "button is-primary", id: "article_publish" %>
     </div>
   </div>
 <% end %>
 
 <%= javascript_pack_tag 'tagEditor' %>
 <%= javascript_pack_tag 'imageEditor' %>
+<%= javascript_pack_tag 'formValidator' %>
