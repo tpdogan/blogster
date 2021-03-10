@@ -133,9 +133,12 @@
 .editor__tag {
   @include is-flex-row-centered;
   padding: 0.5rem 1rem;
-  background-color: lightgray;
-  border-radius: 1rem;
+  background-color: #eee;
+  border-radius: 1.5rem;
   margin: 0.25rem;
+}
+.editor__tag:hover {
+	background-color: #ddd;
 }
 .editor__removeTag {
   @include is-flex-row-centered;
@@ -144,6 +147,11 @@
   width: 20px;
   margin-left: 0.5rem;
   border-radius: 50%;
+  cursor: pointer;
+}
+.editor__removeTag:hover {
+	background-color: #f14668;
+  color: white;
 }
 // . ADD TO BULMA
 .file-cta {
