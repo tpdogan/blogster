@@ -39,7 +39,7 @@
   top: -10000px !important;
   left: -10000px !important;
 }
-// HEADER AND NAV
+// 3. HEADER AND NAV
 .tagbar {
   @include is-flex-row-centered;
 	overflow: hidden;
@@ -52,7 +52,7 @@
 	border-width: 2px !important;
 	font-weight: 600;
 }
-// 3. ARTICLE VIEW
+// 4. ARTICLE VIEW
 .article {
   position: relative;
   overflow: hidden;
@@ -121,7 +121,7 @@
   font-weight: 300;
   font-size: 14px;
 }
-// 4. ARTICLE EDIT
+// 5. ARTICLE EDIT
 .editor__textarea {
   min-height: 300px;
   resize: vertical;
@@ -153,7 +153,17 @@
 	background-color: #f14668;
   color: white;
 }
-// . ADD TO BULMA
+// 6. COMMENT
+.comment__input {
+  resize: none;
+  height: 100px !important;
+}
+.comment__button {
+  position: absolute !important;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
+// 7. ADD TO BULMA
 .file-cta {
   border-radius: 4px 0 0 4px !important;
   justify-content: center !important;

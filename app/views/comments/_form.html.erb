@@ -1,0 +1,25 @@
+<article class="media">
+  <div class="media-left">
+    <figure class="image is-96x96">
+      <img src='<%= current_author.avatar %>' alt='<%= current_author.username %>'>
+    </figure>
+  </div>
+  <div class="media-content">
+    <%= simple_form_for(Comment.new, html: {class: "is-relative"}) do |f| %>
+      <div class="field">
+        <div class="control">
+        <%= f.input :body,
+                    required: true,
+                    autofocus: true,
+                    input_html: { class: "input comment__input" },
+                    label: false,
+                    wrapper: false,
+                    error: false %>
+        </div>
+        <p class='<%= "help is-danger #{"hidden" if @article.errors[:title].empty?}" %>' id="article_title_error">Please enter a title of at least 10 characters</p>
+      </div>
+
+      <%= f.submit "Send", class: "button is-link is-small comment__button" %>
+    <% end %>
+  </div>
+</article>
