@@ -5,7 +5,8 @@ const imageInput = document.getElementById('article_image')
 const tagsInput = document.getElementById('article_tags')
 
 // Form and submit to listen
-const form = document.getElementById('new_article')
+const formNew = document.getElementById('new_article')
+const formEdit = document.querySelector('.edit_article')
 const submit = document.getElementById('article_publish')
 submit.addEventListener('click', (e) => {
   e.preventDefault()
@@ -35,7 +36,13 @@ submit.addEventListener('click', (e) => {
   }
 
   // Submit if all good
-  if (submit) { form.submit() }
+  if (submit) {
+    try {
+      formNew.submit()
+    } catch {
+      formEdit.submit()
+    }
+  }
 })
 
 function showError(element) {
