@@ -24,6 +24,7 @@ tagInput.addEventListener('input', (e) => {
     // Give error if tag already exists
     } else if (tags.includes(tag)) {
       tagError('exist')
+      tagInput.value = ''
     } else {
       // Create tag if conditions are met and clear the input
       createTag(tag)
