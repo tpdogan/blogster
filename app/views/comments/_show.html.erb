@@ -6,18 +6,19 @@
 
   <article class="media is-relative mb-4">
     <div class="media-left">
-      <figure class="image is-96x96">
+      <figure class="image is-64x64">
         <img src='<%= comment.author.avatar %>' alt='<%= comment.author.username %>'>
       </figure>
     </div>
     <div class="media-content">
       <div class="content">
         <strong><%= link_to comment.author.username, articles_path(:author => comment.author.username) %></strong>
-        <small>(<%= comment.created_at.strftime("%d/%m/%Y %I:%M %p") %>)</small>
+        <small>(<%= comment.created_at.strftime("%d/%m/%Y %I:%M") %>)</small>
         <br />
         <p><%= comment.body %></p>
       </div>
     </div>
+
     <% if author_signed_in? %>
       <button class="button is-link is-small comment__button" name="comment__respond" id=<%= comment.id %>>
         <p class='not-mobile'>Respond</p>
@@ -27,6 +28,12 @@
       <%= link_to new_author_session_path, class: "button is-link is-small comment__button" do %>
         <p class='not-mobile'>Sign in to respond</p>
         <p class='mobile'><i class="fal fa-pencil-alt"></i></p>
+      <% end %>
+    <% end %>
+
+    <% if comment.author == current_author %>
+      <%= link_to comment_path(comment.id, :article_id => article.id), method: :delete, class:"button is-link is-small comment__button comment__delete" do %>
+        <i class="fal fa-trash-alt"></i>
       <% end %>
     <% end %>
   </article>

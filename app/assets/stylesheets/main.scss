@@ -218,13 +218,16 @@ body {
 }
 .comment__input {
   resize: none;
-  height: 100px !important;
+  height: 64px !important;
 }
 .comment__button {
   background-color: $orange !important;
   position: absolute !important;
-  bottom: 0.5rem;
-  right: 0.5rem;
+  bottom: 0.25rem;
+  right: 0.25rem;
+}
+.comment__delete {
+  margin-right: 5rem;
 }
 // 7. ADD TO BULMA
 .file-cta {
@@ -264,6 +267,10 @@ body {
     right: 0.25rem !important;
     bottom: 0.25rem !important;
     color: $orange !important;
+    padding: 0.5rem !important;
+  }
+  .comment__delete {
+    margin-right: 2rem;
   }
   .mobile {
     display: block;

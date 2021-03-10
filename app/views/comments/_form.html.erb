@@ -1,6 +1,6 @@
 <article class="media">
   <div class="media-left">
-    <figure class="image is-96x96">
+    <figure class="image is-64x64">
       <img src='<%= current_author.avatar %>' alt='<%= current_author.username %>'>
     </figure>
   </div>
@@ -14,6 +14,7 @@
         <%= f.input :body,
                     required: true,
                     autofocus: true,
+                    maxlength: 100,
                     input_html: { class: "input comment__input" },
                     label: false,
                     wrapper: false,
