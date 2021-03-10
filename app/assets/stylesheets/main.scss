@@ -249,7 +249,7 @@ body {
 }
 @media screen and (max-width: 769px) {
   * {
-    font-size: 14px;
+    font-size: 14px !important;
   }
   .article--vertical{
     @include article--horizontal;
