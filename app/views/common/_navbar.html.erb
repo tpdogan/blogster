@@ -1,43 +1,42 @@
 <nav class="navbar navbar--orange-bg">
-  <div class="navbar-brand">
-    <%= link_to root_path, class: "navbar-item" do %>
-      <h1 class="title is-5">Blogster</h1>
-    <% end %>
-    <div class="navbar-burger burger" data-target="navbarExample">
-      <span></span>
-      <span></span>
-      <span></span>
+  <div class="container">
+    <div class="navbar-brand pl-5">
+      <%= link_to root_path, class: "navbar-item" do %>
+        <h1 class="title is-5">Blogster</h1>
+      <% end %>
+      <div class="navbar-burger burger" data-target="navbar__menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
-  </div>
 
-  <div class="navbar-menu" id="navbarExample">
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="field is-grouped">
-          <p class="control">
-            <%= link_to 'New Article', new_article_path, class: "button is-inverted" %>
+    <div class="navbar-menu" id="navbar__menu">
+      <div class="navbar-end">
+        <p class="navbar-item py-0">
+          <%= link_to 'New Article', new_article_path, class: "button is-full-width" %>
+        </p>
+        <% if author_signed_in? %>
+          <p class="navbar-item py-0">
+            <%= link_to 'My Articles', articles_path(:author => current_author.username), class: "button is-full-width" %>
           </p>
-          <% if author_signed_in? %>
-            <p>
-              <%= link_to 'My Articles', articles_path(:author => current_author.username), class: "button is-inverted" %>
-            </p>
-            <p class="control">
-              <%= link_to current_author.username, edit_author_registration_path, class: "button" %>
-            </p>
-            <p>
-              <%= link_to "Logout", destroy_author_session_path, method: :delete, class: "button" %>
-            </p>
-          <% else %>
-            <p class="control">
-              <%= link_to "Sign In", new_author_session_path, class: "button" %>
-            </p>
-            <p class="control">
-              <%= link_to "Sign Up", new_author_registration_path, class: "button" %>
-            </p>
-          <% end %>
-
-        </div>
+          <p class="navbar-item py-0">
+            <%= link_to current_author.username, edit_author_registration_path, class: "button is-full-width" %>
+          </p>
+          <p class="navbar-item py-0">
+            <%= link_to "Logout", destroy_author_session_path, method: :delete, class: "button is-full-width" %>
+          </p>
+        <% else %>
+          <p class="navbar-item py-0">
+            <%= link_to "Sign In", new_author_session_path, class: "button is-full-width" %>
+          </p>
+          <p class="navbar-item py-0">
+            <%= link_to "Sign Up", new_author_registration_path, class: "button is-full-width" %>
+          </p>
+        <% end %>
       </div>
     </div>
   </div>
 </nav>
+
+<%= javascript_pack_tag 'navbarToggle' %>

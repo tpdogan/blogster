@@ -47,6 +47,7 @@ $orange-grey: #9f9895;
 // 2. GENERAL
 body {
   background-color: #f2f2f2;
+  min-height: 100vh;
 }
 .is-flex-row-centered {
   @include is-flex-row-centered;
@@ -73,23 +74,28 @@ body {
 .not-mobile {
   display: block;
 }
+// 3. HEADER AND NAV
+.navbar-item {
+  margin: 0.25rem !important;
+  padding: 0 !important;
+}
 .navbar--orange-bg {
   background-color: $orange !important;
   .button, .title {
     background-color: transparent !important;
     color: $orange-light !important;
-    border: none;
   }
   .button:hover {
     background-color: $orange-light !important;
     color: $orange !important;
     border: none;
   }
-  .button.is-inverted {
+  .button {
     background-color: $orange-light !important;
     color: $orange !important;
+    border: none;
   }
-  .button.is-inverted:hover {
+  .button:hover {
     background-color: $orange-grey !important;
     color: white !important;
   }
@@ -105,7 +111,6 @@ body {
     background-color: $orange !important;
   }
 }
-// 3. HEADER AND NAV
 .tagbar {
   @include is-flex-row-centered;
 	overflow: hidden;
@@ -234,6 +239,11 @@ body {
 	margin-bottom: -1.5rem;
 }
 // 8. MEDIA QUERIES
+@media screen and (max-width: 1023px) {
+  .navbar-menu.is-active {
+    background-color: $orange-light;
+  }
+}
 @media screen and (max-width: 769px) {
   * {
     font-size: 14px;
