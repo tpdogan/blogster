@@ -192,6 +192,9 @@ body {
   color: white;
 }
 // 6. COMMENT
+.comment__thread {
+  border: 1px solid #9f9895;
+}
 .comment__input {
   resize: none;
   height: 100px !important;

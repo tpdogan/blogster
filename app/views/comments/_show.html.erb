@@ -1,4 +1,9 @@
 <% parent.comments.reverse.each do |comment| %>
+  <% if parent == article %>
+    <section class="box p-1 comment__thread">
+      <div style="margin-bottom: -1rem;">
+  <% end %>
+
   <article class="media is-relative mb-4">
     <div class="media-left">
       <figure class="image is-96x96">
@@ -7,22 +12,33 @@
     </div>
     <div class="media-content">
       <div class="content">
-        <strong><%= comment.author.username %></strong>
+        <strong><%= link_to comment.author.username, articles_path(:author => comment.author.username) %></strong>
         <small>(<%= comment.created_at.strftime("%d/%m/%Y %I:%M %p") %>)</small>
         <br />
         <p><%= comment.body %></p>
       </div>
     </div>
-    <button class="button is-link is-small comment__button" name="comment__respond" id=<%= comment.id %>>Respond</button>
+    <% if author_signed_in? %>
+      <button class="button is-link is-small comment__button" name="comment__respond" id=<%= comment.id %>>Respond</button>
+    <% else %>
+      <%= link_to "Sign in to respond", new_author_session_path, class: "button is-link is-small comment__button" %>
+    <% end %>
   </article>
 
-  <div class="ml-4 mb-5 hidden" name="comment__form" id='<%= "comment__form-#{comment.id}" %>'>
-    <%= render partial: 'comments/form', locals: {type: 'Comment', article_id: article.id, id: comment.id } %>
-  </div>
+  <% if author_signed_in? %>
+    <div class="ml-4 mb-5 hidden" name="comment__form" id='<%= "comment__form-#{comment.id}" %>'>
+      <%= render partial: 'comments/form', locals: {type: 'Comment', article_id: article.id, id: comment.id } %>
+    </div>
+  <% end %>
 
   <% unless comment.comments.empty? %>
     <div class="ml-4">
       <%= render partial: 'comments/show', locals: {article: article, parent: comment} %>
     </div>
+  <% end %>
+
+  <% if parent == article %>
+      </div>
+    </section>
   <% end %>
 <% end %>
