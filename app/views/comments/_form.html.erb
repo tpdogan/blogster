@@ -6,6 +6,9 @@
   </div>
   <div class="media-content">
     <%= simple_form_for(Comment.new, html: {class: "is-relative"}) do |f| %>
+      <%= hidden_field_tag "article", article %>
+      <%= hidden_field_tag "type", type %>
+      <%= hidden_field_tag "id", id %>
       <div class="field">
         <div class="control">
         <%= f.input :body,
@@ -16,7 +19,6 @@
                     wrapper: false,
                     error: false %>
         </div>
-        <p class='<%= "help is-danger #{"hidden" if @article.errors[:title].empty?}" %>' id="article_title_error">Please enter a title of at least 10 characters</p>
       </div>
 
       <%= f.submit "Send", class: "button is-link is-small comment__button" %>

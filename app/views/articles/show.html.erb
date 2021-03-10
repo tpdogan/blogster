@@ -52,7 +52,7 @@
           </div>
         </div>
 
-        <%= render partial: 'comments/form' %>
+        <%= render partial: 'comments/form', locals: {type: 'Article', article: @article, id: @article.id } %>
 
       </div>
     </div>
