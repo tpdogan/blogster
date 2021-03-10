@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       comment.update(:author_id => current_author.id)
     else
     end
-    redirect_to article_path(params[:article])
+    redirect_to article_path(params[:article_id])
   end
 
   private
