@@ -37,10 +37,16 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    if @article.update(article_params)
-      redirect_to article_path(@article)
-    else
-      render :edit
+
+    respond_to do |format|
+      if @article.update(article_params)
+        save_tags(@article.id, params[:article_tags])
+        format.html { redirect_to article_path(@article), notice: 'Article was successfully created.' }
+        format.json { render :show, status: :created, location: @article }
+      else
+        format.html { render :edit}
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
     end
   end
 
