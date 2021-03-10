@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        save_tags(@article.id, params[:article_tags])
+        save_tags(@article, params[:article_tags])
         format.html { redirect_to articles_path, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.update(article_params)
-        save_tags(@article.id, params[:article_tags])
+        save_tags(@article, params[:article_tags])
         format.html { redirect_to article_path(@article), notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
