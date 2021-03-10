@@ -6,6 +6,9 @@ class CommentsController < ApplicationController
       comment = article.comments.build(comment_params)
       comment.update(:author_id => current_author.id)
     else
+      comment = Comment.find(params[:id])
+      subComment = comment.comments.build(comment_params)
+      subComment.update(:author_id => current_author.id)
     end
     redirect_to article_path(params[:article_id])
   end
