@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
   devise_for :authors, :controllers => { :registrations => 'registrations' }
   
-  resources :articles do
-    resources :comment
-  end
+  resources :articles
 
-  resources :comments do
-    resources :comments
-  end
+  resources :comments
   
   root to: 'articles#index'
 end
