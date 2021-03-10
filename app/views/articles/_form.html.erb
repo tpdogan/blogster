@@ -62,8 +62,19 @@
     <div class="control">
       <%= label_tag "Tags (only alphanumeric characters)", nil, class: "label" %>
       <input type="text" class="input" id="tag_input" placeholder="Type comma to save">
-      <div class="editor__tags-wrap my-2"></div>
-      <%= hidden_field_tag :article_tags, nil %>
+      <div class="editor__tags-wrap my-2">
+        <% if @article.tags %>
+          <% @article.tags.each do |tag| %>
+            <div class="editor__tag">
+              <%= tag.name %>
+              <div class="editor__removeTag">
+                <i class="fal fa-times fa-sm"></i>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <%= hidden_field_tag :article_tags, @article.tags.map { |tag| tag.name }.join(', ') %>
     </div>
     <p class="help is-danger hidden" id="article_tags_length_error">Tags must have minimum 4 characters</p>
     <p class="help is-danger hidden" id="article_tags_exist_error">Tag already exists</p>

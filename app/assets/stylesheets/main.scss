@@ -131,10 +131,19 @@
   flex-wrap: wrap;
 }
 .editor__tag {
+  @include is-flex-row-centered;
   padding: 0.5rem 1rem;
   background-color: lightgray;
   border-radius: 1rem;
   margin: 0.25rem;
+}
+.editor__removeTag {
+  @include is-flex-row-centered;
+  background-color: white;
+  height: 20px;
+  width: 20px;
+  margin-left: 0.5rem;
+  border-radius: 50%;
 }
 // . ADD TO BULMA
 .file-cta {
