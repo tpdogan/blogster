@@ -30,6 +30,16 @@
     max-height: 50%;
   }
 }
+@mixin hidden {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: absolute !important;
+  top: -10000px !important;
+  left: -10000px !important;
+}
 // 1. VARIABLES
 $orange: #c23801;
 $orange-light: #ece2de;
@@ -55,14 +65,13 @@ body {
   width: 100% !important;
 }
 .hidden {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  position: absolute !important;
-  top: -10000px !important;
-  left: -10000px !important;
+  @include hidden;
+}
+.mobile {
+  display: none;
+}
+.not-mobile {
+  display: block;
 }
 .navbar--orange-bg {
   background-color: $orange !important;
@@ -207,6 +216,7 @@ body {
   height: 100px !important;
 }
 .comment__button {
+  background-color: $orange !important;
   position: absolute !important;
   bottom: 0.5rem;
   right: 0.5rem;
@@ -224,6 +234,9 @@ body {
 }
 // 8. MEDIA QUERIES
 @media screen and (max-width: 769px) {
+  * {
+    font-size: 14px;
+  }
   .article--vertical{
     @include article--horizontal;
     flex-direction: row;
@@ -232,11 +245,20 @@ body {
     font-size: 1rem;
     line-height: 2rem;
   }
-  .article__body {
-    font-size: 14px;
-  }
   .article--large-font {
     font-size: 1.5rem !important;
+  }
+  .comment__button {
+    background-color: transparent !important;
+    right: 0.25rem !important;
+    bottom: 0.25rem !important;
+    color: $orange !important;
+  }
+  .mobile {
+    display: block;
+  }
+  .not-mobile {
+    display: none;
   }
 }
 @media screen and (max-width: 500px) {

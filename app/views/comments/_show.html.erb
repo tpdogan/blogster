@@ -19,9 +19,15 @@
       </div>
     </div>
     <% if author_signed_in? %>
-      <button class="button is-link is-small comment__button" name="comment__respond" id=<%= comment.id %>>Respond</button>
+      <button class="button is-link is-small comment__button" name="comment__respond" id=<%= comment.id %>>
+        <p class='not-mobile'>Respond</p>
+        <p class='mobile'><i class="fal fa-pencil-alt"></i></p>
+      </button>
     <% else %>
-      <%= link_to "Sign in to respond", new_author_session_path, class: "button is-link is-small comment__button" %>
+      <%= link_to new_author_session_path, class: "button is-link is-small comment__button" do %>
+        <p class='not-mobile'>Sign in to respond</p>
+        <p class='mobile'><i class="fal fa-pencil-alt"></i></p>
+      <% end %>
     <% end %>
   </article>
 
