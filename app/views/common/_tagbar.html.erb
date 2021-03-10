@@ -1,10 +1,10 @@
-<nav class="navbar is-dark is-flex-row-centered">
+<nav class="navbar navbar--orange-grey-bg is-flex-row-centered">
   <div class="navbar-item">
     <div class="field is-grouped tagbar">
       <% tags = Tag.all.reverse %>
       <% (tags.length < 20 ? tags.length : 20).times do |index| %>
         <p class="control">
-          <%= link_to tags[index].name.capitalize, articles_path(:tag => tags[index].name), class: "button is-warning is-outlined is-rounded tag__button" %>
+          <%= link_to tags[index].name.capitalize, articles_path(:tag => tags[index].name), class: "button is-rounded tag__button" %>
         </p>
       <% end %>
     </div>

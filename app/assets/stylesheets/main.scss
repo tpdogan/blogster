@@ -11,8 +11,14 @@
   justify-content: center !important;
   align-items: center !important;
 }
-// 1. FONT STYLES AND IMPORTS
+// 1. VARIABLES
+$orange: #c23801;
+$orange-light: #ece2de;
+$orange-grey: #9f9895;
 // 2. GENERAL
+body {
+  background-color: #f2f2f2;
+}
 .is-flex-row-centered {
   @include is-flex-row-centered;
 }
@@ -38,6 +44,38 @@
   position: absolute !important;
   top: -10000px !important;
   left: -10000px !important;
+}
+.navbar--orange-bg {
+  background-color: $orange !important;
+  .button, .title {
+    background-color: transparent !important;
+    color: $orange-light !important;
+    border: none;
+  }
+  .button:hover {
+    background-color: $orange-light !important;
+    color: $orange !important;
+    border: none;
+  }
+  .button.is-inverted {
+    background-color: $orange-light !important;
+    color: $orange !important;
+  }
+  .button.is-inverted:hover {
+    background-color: $orange-grey !important;
+    color: white !important;
+  }
+}
+.navbar--orange-grey-bg {
+  background-color: $orange-grey !important;
+  .button {
+    background-color: transparent;
+    border: 2px solid $orange-light !important;
+    color: $orange-light !important;
+  }
+  .button:hover {
+    background-color: $orange !important;
+  }
 }
 // 3. HEADER AND NAV
 .tagbar {
