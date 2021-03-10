@@ -1,5 +1,5 @@
 <% article.comments.reverse.each do |comment| %>
-  <article class="media">
+  <article class="media is-relative mb-4">
     <div class="media-left">
       <figure class="image is-96x96">
         <img src='<%= comment.author.avatar %>' alt='<%= comment.author.username %>'>
@@ -13,5 +13,10 @@
         <p><%= comment.body %></p>
       </div>
     </div>
+    <button class="button is-link is-small comment__button" name="comment__respond" id=<%= comment.id %>>Respond</button>
   </article>
+
+  <div class="ml-4 mb-5 hidden" name="comment__form" id='<%= "comment__form-#{comment.id}" %>'>
+    <%= render partial: 'comments/form', locals: {type: 'Comment', article_id: article.id, id: comment.id } %>
+  </div>
 <% end %>
