@@ -1,0 +1,17 @@
+<% article.comments.reverse.each do |comment| %>
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-96x96">
+        <img src='<%= comment.author.avatar %>' alt='<%= comment.author.username %>'>
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <strong><%= comment.author.username %></strong>
+        <small>(<%= comment.created_at.strftime("%d/%m/%Y %I:%M %p") %>)</small>
+        <br />
+        <p><%= comment.body %></p>
+      </div>
+    </div>
+  </article>
+<% end %>

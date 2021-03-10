@@ -54,6 +54,8 @@
 
         <%= render partial: 'comments/form', locals: {type: 'Article', article_id: @article.id, id: @article.id } %>
 
+        <%= render partial: 'comments/show', locals: {article: @article} %>
+
       </div>
     </div>
   </div>
