@@ -3,6 +3,8 @@ module ArticlesHelper
     newTagArray = params.downcase.split(', ')
     oldTagArray = list_tags(article)
 
+    newTagArray.reject!{ |tag| tag.empty? }
+
     remove_tags(article, oldTagArray - newTagArray)
     add_tags(article, newTagArray - oldTagArray)
   end
