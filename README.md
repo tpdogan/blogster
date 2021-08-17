@@ -1,5 +1,7 @@
 # README
 
+https://theblogster.herokuapp.com/
+
 Purpose of this blogster project is to create an example / a template for a blog website.
 It is designed to have 
 
