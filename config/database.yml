@@ -84,3 +84,4 @@ production:
   database: blogster_production
   username: blogster
   password: <%= ENV['BLOGSTER_DATABASE_PASSWORD'] %>
+  url: <%= ENV['BLOGSTER_DATABASE_URL'] %>
